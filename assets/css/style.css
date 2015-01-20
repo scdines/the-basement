@@ -247,7 +247,7 @@ video {
   margin: 0px auto 150px auto;
 }
 /* line 154, ../sass/style.scss */
-#spaces > ul * {
+#spaces > ul *:not(li) {
   -webkit-transition: all 250ms ease-out;
   -moz-transition: all 250ms ease-out;
   -ms-transition: all 250ms ease-out;

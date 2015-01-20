@@ -151,7 +151,7 @@ video {
 	>ul {
 		width: 80%;
 		margin: 0px auto 150px auto;
-		*{
+		*:not(li){
 			@include transition(all, 250ms, ease-out);
 		}
 		>li {
