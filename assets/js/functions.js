@@ -10,24 +10,28 @@
 // remap jQuery to $
 (function($){
 
+
+		function sizeGrids(){
+			$('#spaces>ul>li').height($('#spaces li').width());
+			$('#plans').height(window.innerHeight)
+		};
+
+		
+
 	/* trigger when page is ready */
 	$(document).ready(function (){
 	
 		// your functions go here
+		sizeGrids();
 	
 	});
-	
-	
-	/* optional triggers
 	
 	$(window).load(function() {
 		
 	});
 	
 	$(window).resize(function() {
-		
+		sizeGrids();
 	});
-	
-	*/
 
 })(window.jQuery);
