@@ -343,7 +343,7 @@ footer {
 
 @media (max-width: 1200px) {
   /* line 232, ../sass/style.scss */
-  #vision .col:nth-child(6), #vision .col:nth-child(7) {
+  #vision .col:nth-child(1), #vision .col:nth-child(7) {
     display: none;
   }
   /* line 235, ../sass/style.scss */
@@ -363,7 +363,7 @@ footer {
   }
 
   /* line 257, ../sass/style.scss */
-  #vision .col:nth-child(4), #vision .col:nth-child(5), #vision .col:nth-child(6), #vision .col:nth-child(7) {
+  #vision .col:nth-child(1), #vision .col:nth-child(2), #vision .col:nth-child(6), #vision .col:nth-child(7) {
     display: none;
   }
   /* line 260, ../sass/style.scss */

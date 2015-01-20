@@ -229,7 +229,7 @@ footer {
 
 @media (max-width: 1200px) {
 	#vision {
-		.col:nth-child(6), .col:nth-child(7), {
+		.col:nth-child(1), .col:nth-child(7), {
 			display: none;
 		}
 		.col {
@@ -254,7 +254,7 @@ footer {
 		}
 	}
 	#vision {
-		 .col:nth-child(4), .col:nth-child(5), .col:nth-child(6), .col:nth-child(7), {
+		 .col:nth-child(1), .col:nth-child(2), .col:nth-child(6), .col:nth-child(7), {
 			display: none;
 		}
 		.col {
