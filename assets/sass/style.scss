@@ -23,6 +23,12 @@
     -o-transition: $transition-property $transition-time $method;
     transition: $transition-property $transition-time $method;
 }
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
 
 
 $headerHeight: 60px;
@@ -39,6 +45,7 @@ $font: sans-serif;
 	height: $headerHeight;
 	width: 100%;
 	z-index: 100;
+	background-color: rgba(0,0,0,0);
 	li, h1 {
 		line-height: $headerHeight;
 		font-family: sans-serif;
@@ -49,7 +56,16 @@ $font: sans-serif;
 	}
 	h1 {
 		float: left;
-		margin-left: $margin;
+		margin-left: 10px;
+		text-indent: -99999em;
+		background: url(../img/basementWhite_small.png)no-repeat center center;
+		background-size: cover;
+		width: 250px;
+		height: 42px;
+		margin-top: -60px;
+		@include transition(all, 250ms, ease-out);
+		position: relative;
+		z-index: 15;
 		a {
 			span {
 				opacity: .4;
@@ -82,16 +98,20 @@ $font: sans-serif;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  position: relative;
+  border-bottom: 5px solid white;
+  box-sizing: border-box;
   .content {
 		position: absolute;
-		top: 50%; left: 10%;
-		@include transform(translate(0%,-50%));
+		top: 50%; left: 50%;
+		@include transform(translate(-50%,-50%));
 		color: white;
-		max-width: 500px;
+		width: 80%;
+		max-width: 600px;
 		font-family: $font;
 		z-index: 50;
-		h3 {
-			font-size: 3em;
+		img {
+			width: 100%;
 		}
 		p {
 			margin: 15px 0px;
@@ -115,6 +135,19 @@ $font: sans-serif;
   	cursor: hand; cursor: pointer;
   	font-family: $font;
   }
+  h3 {
+		font-size: 1em;
+		text-align: center;
+		padding-top: 15px;
+		font-weight: 100;
+		width: auto;
+		position: fixed;
+		bottom: 15px; left: 50%;
+		@include transform(translate(-50%,0));
+		cursor: hand; cursor: pointer;
+		color: white;
+		font-family: $font;
+	}
 }
 #film {
 	overflow: hidden;
@@ -143,14 +176,18 @@ video {
 		}
 	}
 }
-#spaces {
+#vendors {
 	overflow-y: hidden;
+	max-width: 1260px;
+	margin: auto;
+	width: 100%;
 	h2 {
 		color: white;
 	}
 	>ul {
 		width: 80%;
 		margin: 0px auto 150px auto;
+		text-align: center;
 		*:not(li){
 			@include transition(all, 250ms, ease-out);
 		}
@@ -185,7 +222,7 @@ video {
 				}
 				a {
 					margin-top: 25px;
-					padding: 0px 10px;
+					padding: 3px 10px 0px 10px;
 					line-height: 35px;
 					border: 1px solid white;
 					color: white;
@@ -207,25 +244,164 @@ video {
 		}
 	}
 }
-#floorplans {
+#floormarketplace {
 	background: url(../img/bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  #plans {
+  #marketplace {
   	height: 100%;
+   display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+	   p {
+	   	font-family: $font;
+	   	margin-bottom: 25px;
+	   	color: white;
+	   	font-size: 1.1em;
+	   	line-height: 1.3em;
+	   	font-weight: 100;
+	   }
+	   p:last-child {
+	   	margin-bottom: 0px;
+	   }
+	  	div {
+	  		width: 50%;
+	  		img {
+	  			width: 150px;
+	  			margin: auto;
+	  			display: block;
+	  			margin-bottom: 55px;
+	  		}
+	  	}
   }
 }
 
-footer {
-	height: 400px;
+#contact {
 	width: 100%;
 	background-color: black;
 	color: white;
-	text-align: center;
-	line-height: 400px;
+	text-align: left;
+	position: relative;
+	height: 355px;
+	display: flex;
+  	flex-flow: row wrap;
+	.map {
+		width: 50%;
+		height: 100%;
+		overflow: hidden;
+		background: url(../img/basementStaticMap.jpg) no-repeat center center; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		a {
+			height: 100%; width: 100%;
+  			display: flex;
+  			align-items: center;
+  			justify-content: center;
+  			text-decoration: none;
+  			opacity: 0;
+			@include transition(all, 250ms, ease-out);
+		}
+		p {
+			letter-spacing: 1px;
+			color: white;
+			background-color: rgba(0,0,0,.8);
+			padding: 15px 10px 10px 10px;
+			font-family: $font;
+			font-size: 1.5em;
+			line-height: 25px;
+			text-decoration: none;
+		}
+	}
+	.map {
+		a:hover {
+			opacity: 1;
+		}
+	}
+	.info {
+		font-family: $font;
+		letter-spacing: 1px;
+		width: 50%;
+  		display: flex;
+  		align-items: center;
+		p:nth-child(2) {
+			margin-bottom: 25px;
+		}
+		p {
+		margin-bottom: 5px;
+		margin-left: 25px;
+			a {
+				color: white;
+				text-decoration: none;
+				cursor: hand; cursor: pointer;
+			}
+		}
+		p:last-child {
+			margin-top: 25px;
+			margin-bottom: 0px;
+			font-size: .8em;
+			opacity: .6;
+		}
+	}
 }
+
+
+
+
+
+
+#navBtn {
+	margin: $margin $margin 0px 0px;
+	float: right;
+	display: none;
+	position: relative;
+	z-index: 5;
+}
+#navBtn { cursor: pointer; padding: 7px 25px 8px 0px; }
+#navBtn span, #navBtn span:before, #navBtn span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 3px;
+  width: 25px;
+  background: rgba(255,255,255,1);
+  position: absolute;
+  display: block;
+  content: '';
+  transition: all 500ms ease-in-out;
+}
+#navBtn span:before {
+  top: -6px; 
+}
+#navBtn span:after {
+  bottom: -6px;
+}
+
+#navBtn span, #navBtn span:before, #navBtn span:after {
+  transition: all 500ms ease-in-out;
+}
+#navBtn.active span {
+  background: rgba(0,25,50,0);
+}
+#navBtn.active span:before, #navBtn.active span:after {
+  top: 0px;
+}
+#navBtn.active span:before {
+	@include transform(rotate(45deg));
+}
+#navBtn.active span:after {
+	@include transform(rotate(-45deg));
+}
+
+
+
+
+
+
 
 @media (max-width: 1200px) {
 	#vision {
@@ -237,16 +413,27 @@ footer {
 		}
 	}
 
-	#spaces {
+	#vendors {
 		ul {
-			li {
+			>li {
 				width: 50%;
+				ul {
+					li {
+						width: 100%;
+					}
+				}
 			}
 		}
 	}
 }
 @media (max-width: 640px) {
-	#spaces {
+	#contact {
+		.map, .info {
+			width: 100%;
+			height: 50%;
+		}
+	}
+	#vendors {
 		ul {
 			li {
 				width: 100%;
@@ -261,9 +448,76 @@ footer {
 			width: 33.33%;
 		}
 	}
+	#floormarketplace{
+		#marketplace {
+		  	div {
+		  		width: 80%;
+		  	}
+		}
+	}
 	#main {
 		nav {
-			display: none;
+		width: 100%;
+		position: absolute;
+		top: -5px;
+		padding-top: 65px;
+		z-index: 0;
+		ul {
+			position: absolute;
+			right: 0px;
+			text-align: right;
+			li {
+				clear: both;
+				margin-bottom: 5px;
+				line-height: 35px;
+				opacity: 1;
+				font-size: 1.3em;
+				@include transform(translate(105%,0));
+				@include transition(all, 250ms, ease-out);
+				float: right;
+				text-align: right;
+				margin-right: 0px;
+				a {
+					background-color: black;
+					padding: 9px 10px 5px 10px;
+					border: 1px solid white;
+					box-sizing: border-box;
+				}
+			}
+			li:hover {}
+		}
+	}
+	nav.open {
+		ul {
+			li {
+				@include transform(translate(0,0));	
+			}
+			li:nth-child(1){
+				@include transition-delay(0ms);
+			}
+			li:nth-child(2){
+				@include transition-delay(50ms);
+			}
+			li:nth-child(3){
+				@include transition-delay(100ms);
+			}
+			li:nth-child(4){
+				@include transition-delay(150ms);
+			}
+			li:nth-child(5){
+				@include transition-delay(200ms);
+			}
+		}
+	}
+	}
+	#navBtn {
+		display: block;
+	}
+	#contact {
+		.info {
+			p {
+  				font-size: .7em;
+			}
 		}
 	}
 }
