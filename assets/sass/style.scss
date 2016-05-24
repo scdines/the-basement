@@ -33,7 +33,7 @@
 
 $headerHeight: 60px;
 $margin: 20px;
-$font: sans-serif;
+$font: 'Open Sans', sans-serif;
 
 .section, .wrapper, body, html {
 	height: 100%; width: 100%;
@@ -47,7 +47,7 @@ $font: sans-serif;
 	z-index: 100;
 	background-color: rgba(0,0,0,0);
 	li, h1 {
-		line-height: $headerHeight;
+		line-height: 70px;
 		font-family: sans-serif;
 		a {
 			color: white;
@@ -58,14 +58,15 @@ $font: sans-serif;
 		float: left;
 		margin-left: 10px;
 		text-indent: -99999em;
-		background: url(../img/basementWhite_small.png)no-repeat center center;
+		background: url(../img/logo_small.svg)no-repeat center center;
 		background-size: cover;
-		width: 250px;
-		height: 42px;
-		margin-top: -60px;
+		width: 168px;
+		height: 68px;
+		margin-top: -70px;
 		@include transition(all, 250ms, ease-out);
 		position: relative;
 		z-index: 15;
+  		cursor: hand; cursor: pointer;
 		a {
 			span {
 				opacity: .4;
@@ -83,6 +84,11 @@ $font: sans-serif;
 			font-weight: 100;
 			a {
 				opacity: .4;
+				font-weight: 400;
+				@include transition(opacity, 250ms, ease-out);
+			}
+			a:hover {
+				opacity: 1;
 			}
 		}
 		li:last-of-type {
@@ -98,7 +104,10 @@ $font: sans-serif;
 }
 
 #splash {
-	background: url(../img/bg1.jpg) no-repeat center center fixed; 
+	background-image: url(../img/bg1.jpg);
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-position: center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -182,22 +191,38 @@ $font: sans-serif;
 	h2 {
 		position: absolute;
 		top: 50%; left: 50%;
-		@include transform(translate(-50%,-50%) scale(1));
+		@include transform(translate(-50%,-50%));
+		@include transition(all, 150ms, ease-out);
 		color: white;
 		background-color: black;
-		border: 5px solid white;
+		border: 3px solid white;
 		z-index: 10;
 		letter-spacing: 1px;
 		color: white;
-		background-color: rgba(0,0,0,.8);
+		background-color: rgba(0,0,0,1);
 		padding: 15px 10px 10px 10px;
 		font-family: $font;
 		font-size: 5em;
 		text-decoration: none;
 		cursor: hand; cursor: pointer;
+		border-radius: 50%;
+		padding: 25px;
+		opacity: .8;
+		.arrow-right {
+			width: 0;
+			height: 0;
+			border-top: 25px solid transparent;
+			border-left: 50px solid rgba(255,255,255,1);
+			border-bottom: 25px solid transparent;
+			margin-left: 10px;
+
+			@include transition(all, 150ms, ease-out);
+		}
 	}
 	h2:hover {
-		@include transform(translate(-50%,-50%) scale(1.1));
+		padding: 35px;
+		border: 1px solid white;
+		opacity: 1;
 	}
 }
 video {
@@ -206,6 +231,9 @@ video {
 	@include transform(translate(-50%,-50%));
 	min-height: 101%; min-width: 101%;
 	height: auto; width: auto;
+}
+video::-webkit-media-controls {
+    display:none !important;
 }
 #videoOverlay {
 	position: fixed;
@@ -257,7 +285,7 @@ video {
 	>ul {
 		width: 80%;
 		margin: 0px auto 150px auto;
-		text-align: center;
+		// text-align: center;
 		*:not(li){
 			@include transition(all, 250ms, ease-out);
 		}
@@ -285,7 +313,7 @@ video {
 				position: absolute;
 				top: 50%; left: 50%;
 				@include transform(translate(-50%,-50%));
-				width: 90%;
+				width: 70%;
 				opacity: 0;
 				h2{
 					font-size: 3.5em;
@@ -295,7 +323,10 @@ video {
 				}
 				ul {
 					li {
-						color: rgba(255,255,255,.4);
+						font-weight: bold;
+						font-size: 1.9em;
+						color: rgba(255,255,255,1);
+						text-transform: uppercase;
 					}
 				}
 				a {
@@ -335,6 +366,7 @@ video {
 			height: 100%; width: 100%;
 			background-color: rgba(0,0,0,1);
 			opacity: 0;
+			@include transition(all, 250ms, ease-out);
 		}
 		>li:hover:before{
 			opacity: .8;
@@ -342,7 +374,10 @@ video {
 	}
 }
 #floormarketplace {
-	background: url(../img/bg.jpg) no-repeat center center fixed; 
+	background-image: url(../img/bg.jpg); 
+	    background-repeat: no-repeat;
+	    background-attachment: fixed;
+	    background-position: center; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -350,10 +385,15 @@ video {
   #marketplace {
   	height: 100%;
    display: flex;
+display: -webkit-flex;
    -webkit-align-items: center;
+-webkit-align-items: center;
    align-items: center;
+-webkit-align-items: center;
    -webkit-justify-content: center;
+-webkit-justify-content: center;
    justify-content: center;
+-webkit-justify-content: center;
 	   p {
 	   	font-family: $font;
 	   	margin-bottom: 25px;
@@ -361,6 +401,10 @@ video {
 	   	font-size: 1.1em;
 	   	line-height: 1.3em;
 	   	font-weight: 100;
+	   	text-align: center;
+	   }
+	   p:first-of-type {
+	   	font-weight: 700;
 	   }
 	   p:last-child {
 	   	margin-bottom: 0px;
@@ -371,7 +415,7 @@ video {
 	  			width: 150px;
 	  			margin: auto;
 	  			display: block;
-	  			margin-bottom: 55px;
+	  			margin-bottom: 25px;
 	  		}
 	  	}
   }
@@ -385,6 +429,7 @@ video {
 	position: relative;
 	height: 355px;
 	display: flex;
+	display: -webkit-flex;
   	flex-flow: row wrap;
 	.map {
 		width: 50%;
@@ -398,8 +443,11 @@ video {
 		a {
 			height: 100%; width: 100%;
   			display: flex;
+			display: -webkit-flex;
   			align-items: center;
+-webkit-align-items: center;
   			justify-content: center;
+-webkit-justify-content: center;
   			text-decoration: none;
   			opacity: 0;
 			@include transition(all, 250ms, ease-out);
@@ -408,7 +456,7 @@ video {
 			letter-spacing: 1px;
 			color: white;
 			background-color: rgba(0,0,0,.8);
-			padding: 15px 10px 10px 10px;
+			padding: 15px 10px;
 			font-family: $font;
 			font-size: 1.5em;
 			line-height: 25px;
@@ -423,10 +471,13 @@ video {
 	.info {
 		font-family: $font;
 		letter-spacing: 1px;
+		font-size: 1em;
 		width: 50%;
   		display: flex;
+		display: -webkit-flex;
   		align-items: center;
-		p:nth-child(2) {
+		-webkit-align-items: center;
+		p:nth-child(2), p:nth-child(4) {
 			margin-bottom: 25px;
 		}
 		p {
@@ -438,16 +489,28 @@ video {
 				cursor: hand; cursor: pointer;
 			}
 		}
+		.sub
+		{
+			font-size: 10px;
+			opacity: .5;
+		}
 		p:last-child {
 			margin-bottom: 0px;
 			font-size: .8em;
 			opacity: .6;
 		}
+		.time {
+			font-size: .8em;
+			opacity: .8;
+			bold {
+				font-weight: bold;
+			}
+		}
 	}
 	.socialIcons {
 		margin-left: 25px;
 		margin-top: 15px;
-		margin-bottom: 25px;
+		margin-bottom: 20px;
 		li {
 			float: left;
 			margin-right: 5px;
@@ -494,7 +557,7 @@ video {
 	position: relative;
 	z-index: 5;
 }
-#navBtn { cursor: pointer; padding: 7px 25px 8px 0px; }
+#navBtn { cursor: pointer; padding: 14px 25px 8px 0px; }
 #navBtn span, #navBtn span:before, #navBtn span:after {
   cursor: pointer;
   border-radius: 1px;
@@ -548,7 +611,7 @@ video {
 	#vendors {
 		ul {
 			>li {
-				width: 48%;
+				width: 32%;
 				ul {
 					li {
 						width: 100%;
@@ -557,12 +620,48 @@ video {
 			}
 		}
 	}
+	#floormarketplace{
+	  #marketplace { 
+	  	div {
+	  		width: 70%;
+	  	}
+	  }
+	}
+}
+
+@media (max-width: 900px){
+	#vendors {
+		ul {
+			>li {
+				width: 48%;
+			}
+		}
+	}
 }
 @media (max-width: 640px) {
+	#splash, #floormarketplace {
+		background-attachment: inherit;
+		h3 {
+			position: absolute;
+		}
+	}
 	#contact {
+		height: auto;
 		.map, .info {
 			width: 100%;
-			height: 50%;
+			height: 250px;
+		}
+		.info {
+			p {
+  				font-size: .7em;
+			}
+		}
+		.map {
+			display: none;
+			p {
+				font-size: 1em;
+				padding: 5px 10px;
+			}
 		}
 	}
 	#vendors {
@@ -592,7 +691,7 @@ video {
 		width: 100%;
 		position: absolute;
 		top: -5px;
-		padding-top: 65px;
+		padding-top: 75px;
 		ul {
 			position: absolute;
 			right: 0px;
@@ -600,7 +699,7 @@ video {
 			li {
 				clear: both;
 				margin-bottom: 5px;
-				line-height: 35px;
+				line-height: 38px;
 				opacity: 1;
 				font-size: 1.3em;
 				@include transform(translate(105%,0));
@@ -610,7 +709,7 @@ video {
 				margin-right: 0px;
 				a {
 					background-color: black;
-					padding: 9px 10px 5px 10px;
+  					padding: 8px 8px 8px 8px;
 					border: 1px solid white;
 					box-sizing: border-box;
 					opacity: .8;
@@ -644,12 +743,5 @@ video {
 	}
 	#navBtn {
 		display: block;
-	}
-	#contact {
-		.info {
-			p {
-  				font-size: .7em;
-			}
-		}
 	}
 }

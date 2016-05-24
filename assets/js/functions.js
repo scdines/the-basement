@@ -55,6 +55,13 @@
 				$('#main nav').toggleClass('open');
 			});
 
+			$('#main>h1').click(function() {
+				$('html').css('overflow','hidden');
+		        $("html, body").animate({scrollTop: 0}, 1500, function(){
+					$('html').css('overflow','auto');
+		        });
+		    });
+
 
 
 	    	var iframe = document.getElementById('video');
